@@ -67,7 +67,7 @@ export function Work() {
               </div>
             </div>
           </Link> */}
-          <Link to="/kqt">
+          {/* <Link to="/kqt">
             <div className="titleCard">
               <img src={kingsAndQueensTC} alt="Kings & Queens title card" />
               <div className="projectInfo">
@@ -75,7 +75,7 @@ export function Work() {
                 <h3>2016 - 2020</h3>
               </div>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </main>
     </>
