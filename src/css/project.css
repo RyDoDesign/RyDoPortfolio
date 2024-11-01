@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'KingsAndQueens';
+  src: url('../fonts/KingsandQueens-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'KingsAndQueensKO';
+  src: url('../fonts/KingsandQueens-Knockout.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.projectPage section {
+  margin-bottom: 50px;
+}
+
+.projectDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+
+.projectDetails h1,
+.projectDetails h3,
+.projectDetails p {
+  text-align: left;
+}
+
+.projectDetails a,
+.gallery a {
+  text-decoration: underline;
+}
+
+.imageGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.bmaHomePageLoop {
+  margin-top: 50px;
+}
+
+.gallery img,
+.gallery video {
+  width: calc(50% - 25px);
+  border-radius: 25px;
+}
+
+@media (orientation: landscape) {
+
+  .gallery img,
+  .gallery video {
+    width: calc(25% - 37.5px);
+    border-radius: 25px;
+  }
+}
+
+.gallery h1 {
+  margin: 50px 0;
+}
+
+.bmaHomePageLoop {
+  width: 100%;
+}
+
+.bmaHomePageLoop video {
+  width: calc(100vw - 100px);
+  border-radius: 25px;
+  transition: all 200ms ease-in-out;
+}
+
+.bmaHomePageLoop video:hover {
+  transform: scale(1.025);
+}
+
+.typefaceDemo,
+.typefaceDemo-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100vw - 100px);
+}
+
+.typefaceDemo input,
+.typefaceDemo-1 input {
+  width: 100%;
+  margin: -20px auto 0;
+  font-family: 'KingsAndQueensKO';
+  font-size: 48px;
+  border: none;
+}
+
+.typefaceDemo-1 input {
+  font-family: 'KingsAndQueens';
+}
+
+.typefaceDemo input:focus-visible,
+.typefaceDemo-1 input:focus-visible {
+  outline: none;
+}
