@@ -13,7 +13,7 @@ export function GMs() {
     if (imageCount < 317) {
       setImageCount(prevCount => prevCount + 48);
     } else if (imageCount > 317) {
-      setImageCount(364);
+      setImageCount(365);
     };
   };
 

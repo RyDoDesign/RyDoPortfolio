@@ -11,6 +11,7 @@ import { DaysOfDes } from './pages/30dod';
 import { KingsAndQueens } from './pages/kqt';
 import { UnfinishedNFTs } from './pages/unfinishedNFTs';
 import { Misc } from './pages/misc';
+import { Photo } from './pages/photo';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/kqt" element={<KingsAndQueens />} />
           <Route path="/unfinishedNFTs" element={<UnfinishedNFTs />} />
           <Route path="/misc" element={<Misc />} />
+          <Route path="/photo" element={<Photo />} />
         </Route>
       </Routes>
       <Routes>

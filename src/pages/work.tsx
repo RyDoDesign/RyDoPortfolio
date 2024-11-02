@@ -7,6 +7,7 @@ import miscTC from "../images/titleCards/miscTC.png";
 import daysOfDesignTC from "../images/titleCards/30DaysOfDesignTC.png";
 import kingsAndQueensTC from "../images/titleCards/kingsAndQueensTC.png";
 import unfinishedNFTsTC from "../images/titleCards/unfinishedNFTsTC.png";
+import photoTC from "../images/titleCards/photoTC.png";
 
 export function Work() {
   return (
@@ -58,6 +59,15 @@ export function Work() {
               </div>
             </div>
           </Link>
+          <Link to="/photo">
+            <div className="titleCard">
+              <img src={photoTC} alt="Kings & Queens title card" />
+              <div className="projectInfo">
+                <h1>Photography</h1>
+                <h3>2016 - 2020</h3>
+              </div>
+            </div>
+          </Link>
           {/* <Link to="/misc">
             <div className="titleCard">
               <img src={miscTC} alt="Miscellaneous title card" />
@@ -67,15 +77,6 @@ export function Work() {
               </div>
             </div>
           </Link> */}
-          <Link to="/kqt">
-            <div className="titleCard">
-              <img src={kingsAndQueensTC} alt="Kings & Queens title card" />
-              <div className="projectInfo">
-                <h1>Photography</h1>
-                <h3>2016 - 2020</h3>
-              </div>
-            </div>
-          </Link>
         </div>
       </main>
     </>

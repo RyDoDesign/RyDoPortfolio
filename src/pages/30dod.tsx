@@ -38,7 +38,7 @@ export function DaysOfDes() {
         <section className="projectDetails">
           <h1>30 Days of Design • 2020</h1>
           <h3>Deliverables: 13 print projects, 1 web comp, & 1 logo (~100 total images)</h3>
-          <p>Personal project. 30 days of randomly generated design prompts for imaginary clients. A way to stay sane during the pandemic.</p>
+          <p>30 days of randomly generated design prompts for imaginary clients. A way to stay sane during the pandemic.</p>
         </section>
         <section className="gallery">
           <h1>At a Glance</h1>
