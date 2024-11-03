@@ -25,7 +25,7 @@ export function Work() {
           </Link>
           <Link to="/gms">
             <div className="titleCard">
-              <video autoPlay loop muted><source src={gmsTC} type="video/mp4" /></video>
+              <video autoPlay loop muted playsInline><source src={gmsTC} type="video/mp4" /></video>
               <div className="projectInfo">
                 <h1>GMs • Digital Art</h1>
                 <h3>2023 - 2024</h3>
