@@ -48,7 +48,7 @@ export function GMs() {
           <div className="imageGrid">
             {gmHighlights.map((src, index) => (
               gmHLVidNumbers.includes(index + 1) ? (
-                <video autoPlay loop muted><source src={src} type="video/mp4" /></video>
+                <video autoPlay loop muted playsInline><source src={src} type="video/mp4" /></video>
               ) : (
                 <img key={index} src={src} />
               )
@@ -60,7 +60,7 @@ export function GMs() {
           <div className="imageGrid">
             {gmFullSet.map((src, index) => (
               gmVidNumbers.includes(index + 1) ? (
-                <video autoPlay loop muted width={600}><source src={src} type="video/mp4" /></video>
+                <video autoPlay loop muted playsInline width={600}><source src={src} type="video/mp4" /></video>
               ) : (
                 <img key={index} src={src} alt={index.toString()} />
               )
