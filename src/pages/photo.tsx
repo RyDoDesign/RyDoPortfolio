@@ -18,9 +18,9 @@ export function Photo() {
     <>
       <main className="projectPage">
         <section className="projectDetails">
-          <h1>Photography • 2016 - 2020</h1>
-          <h3>Deliverables: ~100 photographs</h3>
-          <p>An overview of the work I've done as a photographer. Mostly portraits, landscapes, and artsy composites.</p>
+          <h1>Photography • 2015 - 2020</h1>
+          <h3>Deliverables: 40 images</h3>
+          <p>People, places, & things I've photographed.</p>
         </section>
         <section className="gallery">
           <div className="imageGrid">

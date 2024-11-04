@@ -36,11 +36,14 @@ for (let i = 1; i < gmHLImageCount; i++) {
 
 // Photo
 export const photoImages = [];
-const photoImageCount = 10;
-const photoPNGNumbers = [];
+const photoImageCount = 40;
+const photoPNGNumbers = [28, 36, 37];
+const photoJPGNumbers = [24];
 for (let i = 0; i < photoImageCount; i++) {
   if (photoPNGNumbers.includes(i)) {
     photoImages.push(require(`../images/photo/${i}.png`));
+  } else if (photoJPGNumbers.includes(i)) {
+    photoImages.push(require(`../images/photo/${i}.JPG`));
   } else {
     photoImages.push(require(`../images/photo/${i}.jpg`));
   }

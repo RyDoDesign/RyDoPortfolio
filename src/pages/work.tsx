@@ -50,21 +50,21 @@ export function Work() {
               </div>
             </div>
           </Link>
+          <Link to="/photo">
+            <div className="titleCard">
+              <img src={photoTC} alt="Kings & Queens title card" />
+              <div className="projectInfo">
+                <h1>Photography</h1>
+                <h3>2015 - 2020</h3>
+              </div>
+            </div>
+          </Link>
           <Link to="/kqt">
             <div className="titleCard">
               <img src={kingsAndQueensTC} alt="Kings & Queens title card" />
               <div className="projectInfo">
                 <h1>Kings & Queens • Typeface</h1>
                 <h3>2019</h3>
-              </div>
-            </div>
-          </Link>
-          <Link to="/photo">
-            <div className="titleCard">
-              <img src={photoTC} alt="Kings & Queens title card" />
-              <div className="projectInfo">
-                <h1>Photography</h1>
-                <h3>2016 - 2020</h3>
               </div>
             </div>
           </Link>
