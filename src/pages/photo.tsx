@@ -18,7 +18,7 @@ export function Photo() {
     <>
       <main className="projectPage">
         <section className="projectDetails">
-          <h1>Photography • 2015 - 2020</h1>
+          <h1>Misc. Photography • 2015 - 2020</h1>
           <h3>Deliverables: 40 images</h3>
           <p>People, places, & things I've photographed.</p>
         </section>

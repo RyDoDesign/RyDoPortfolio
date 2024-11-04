@@ -54,7 +54,7 @@ export function Work() {
             <div className="titleCard">
               <img src={photoTC} alt="Kings & Queens title card" />
               <div className="projectInfo">
-                <h1>Photography</h1>
+                <h1>Misc. Photography</h1>
                 <h3>2015 - 2020</h3>
               </div>
             </div>
