@@ -1,10 +1,10 @@
-import { Navbar } from "./components/navbarConnect";
+import { NavbarConnect } from "./components/navbarConnect";
 import { Outlet } from "react-router-dom";
 
 export function LayoutConnect() {
   return (
     <>
-      <Navbar />
+      <NavbarConnect />
       <div>
         <Outlet />
       </div>

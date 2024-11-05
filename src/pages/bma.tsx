@@ -60,6 +60,14 @@ export function BMA() {
             ))}
           </div>
         </section> */}
+        <section className="gallery">
+          <h1>More Bears</h1>
+          <div className="imageGrid">
+            {collectionImages.map((src, index) => (
+              <img key={index} src={src} alt={index.toString()} />
+            ))}
+          </div>
+        </section>
       </main>
     </>
   )

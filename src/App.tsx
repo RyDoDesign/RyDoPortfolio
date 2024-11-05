@@ -2,8 +2,10 @@ import React from 'react';
 import './App.css';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Work } from './pages/work';
+import { Play } from './pages/play';
 import { Connect } from './pages/connect';
 import { Layout } from './layout';
+import { LayoutPlay } from './layoutPlay';
 import { LayoutConnect } from './layoutConnect';
 import { BMA } from './pages/bma';
 import { GMs } from './pages/gms';
@@ -26,6 +28,11 @@ function App() {
           <Route path="/unfinishedNFTs" element={<UnfinishedNFTs />} />
           <Route path="/misc" element={<Misc />} />
           <Route path="/photo" element={<Photo />} />
+        </Route>
+      </Routes>
+      <Routes>
+        <Route element={<LayoutPlay />}>
+          <Route path="/play" element={<Play />} />
         </Route>
       </Routes>
       <Routes>

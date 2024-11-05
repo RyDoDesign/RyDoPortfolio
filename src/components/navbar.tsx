@@ -15,6 +15,9 @@ export function Navbar() {
           <Link to="/">
             <a className="activeLink">Work</a>
           </Link>
+          <Link to="/play">
+            <a>Play</a>
+          </Link>
           <Link to="/connect">
             <a>Connect</a>
           </Link>
