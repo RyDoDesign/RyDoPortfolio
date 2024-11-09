@@ -23,8 +23,10 @@ const Squiggle = (p: p5) => {
   let waves: Wave[] = [];
   let totalWaves = 2;
   let ballSize = 75;
-  let translation, interval, strokeWeight, bgColor, ballColor, strokeColor, randomizeAllBtn, randomizeWaveBtn, randomizeColorsBtn, randomizeSlidersBtn;
-  let sizeSlider: p5.Element, intervalSlider: p5.Element, strokeSlider: p5.Element, bgColorRadio: p5.Element, ballColorRadio: p5.Element, strokeColorRadio: p5.Element;
+  let translation, interval, strokeWeight, shape, bgColor, ballColor, strokeColor;
+  let btnCont, randomizeAllBtn, randomizeWaveBtn, randomizeColorsBtn, randomizeFormBtn;
+  let sliderCont, sizeSlider: p5.Element, sizeSliderLabel, sizeSliderCont, intervalSlider: p5.Element, intervalSliderLabel, intervalSliderCont, strokeSlider: p5.Element, strokeSliderLabel, strokeSliderCont;
+  let shapeRadio: p5.Element, bgColorRadio: p5.Element, ballColorRadio: p5.Element, strokeColorRadio: p5.Element;
   let isPortrait = window.innerHeight >= window.innerWidth;
 
   if (isPortrait) {
@@ -41,19 +43,22 @@ const Squiggle = (p: p5) => {
     const newWaves: Wave[] = [];
     for (let i = 0; i < 2; i++) {
       newWaves.push(
-        new Wave(p.random(20, canvasWidth * 0.1), p.random(40, 800), p.random(p.PI * 2))
+        new Wave(p.random(20, canvasWidth * 0.06), p.random(40, 800), p.random(p.PI * 2))
       );
     }
     setWaves(newWaves);
   }
 
-  function randomizeSliders() {
+  function randomizeForm() {
     const randomSize = Math.floor(Math.random() * (sizeSliderMax - 1)) + 1;
     sizeSlider.value(randomSize);
     const randomInterval = Math.floor(Math.random() * 9) + 1;
     intervalSlider.value(randomInterval);
     const randomStrokeWeight = Math.floor(Math.random() * 5);
     strokeSlider.value(randomStrokeWeight);
+    const shapeRadioOptions = shapeRadio.elt.querySelectorAll('input');
+    const shapeRandomOption = shapeRadioOptions[Math.floor(Math.random() * shapeRadioOptions.length)];
+    (shapeRadio as any).selected(shapeRandomOption.value);
   }
 
   function randomizeColors() {
@@ -70,28 +75,66 @@ const Squiggle = (p: p5) => {
 
   function randomizeAll(setWaves: (waves: Wave[]) => void) {
     randomizeWave(setWaves);
-    randomizeSliders();
+    randomizeForm();
     randomizeColors();
   }
 
   p.setup = () => {
     p.createCanvas(canvasWidth, canvasWidth);
+
+    // Buttons
+    btnCont = p.createDiv();
+    btnCont.class('btnCont');
     randomizeAllBtn = p.createButton('Randomize All');
+    randomizeWaveBtn = p.createButton('Randomize Wave');
+    randomizeColorsBtn = p.createButton('Randomize Colors');
+    randomizeFormBtn = p.createButton('Randomize Form');
     randomizeAllBtn.mousePressed(() => randomizeAll((newWaves) => {
       waves = newWaves;
     }));
-    randomizeWaveBtn = p.createButton('Randomize Wave');
     randomizeWaveBtn.mousePressed(() => randomizeWave((newWaves) => {
       waves = newWaves;
     }));
-    randomizeColorsBtn = p.createButton('Randomize Colors');
     randomizeColorsBtn.mousePressed(() => randomizeColors());
-    randomizeSlidersBtn = p.createButton('Randomize Sliders');
-    randomizeSlidersBtn.mousePressed(() => randomizeSliders());
+    randomizeFormBtn.mousePressed(() => randomizeForm());
+    btnCont.child(randomizeAllBtn);
+    btnCont.child(randomizeWaveBtn);
+    btnCont.child(randomizeColorsBtn);
+    btnCont.child(randomizeFormBtn);
+
+    // Sliders
+    sliderCont = p.createDiv();
+    sliderCont.class('sliderCont');
+
+    sizeSliderCont = p.createDiv();
+    sizeSliderLabel = p.createElement('h3', 'Size:');
     sizeSlider = p.createSlider(1, sizeSliderMax, ballSize, 1);
+    sizeSliderCont.child(sizeSliderLabel);
+    sizeSliderCont.child(sizeSlider);
+
+    intervalSliderCont = p.createDiv();
+    intervalSliderLabel = p.createElement('h3', 'Interval:');
     intervalSlider = p.createSlider(1, 10, 3, 1);
-    strokeSlider = p.createSlider(0, 5, 2, 1);
-    // ballColorPicker = p.createColorPicker("#000000");
+    intervalSliderCont.child(intervalSliderLabel);
+    intervalSliderCont.child(intervalSlider);
+
+    strokeSliderCont = p.createDiv();
+    strokeSliderLabel = p.createElement('h3', 'Stroke:');
+    strokeSlider = p.createSlider(0, 10, 2, 1);
+    strokeSliderCont.child(strokeSliderLabel);
+    strokeSliderCont.child(strokeSlider);
+
+    sliderCont.child(sizeSliderCont);
+    sliderCont.child(intervalSliderCont);
+    sliderCont.child(strokeSliderCont);
+
+    // Radios
+    shapeRadio = p.createRadio();
+    (shapeRadio as any).option('circle', 'Circle');
+    (shapeRadio as any).option('square', 'Square');
+    // (shapeRadio as any).option('triangle', 'Triangle');
+    (shapeRadio as any).option('ribbon', 'Ribbon');
+    (shapeRadio as any).selected('circle', 'Circle');
     bgColorRadio = p.createRadio();
     (bgColorRadio as any).option('#000000', 'Black');
     (bgColorRadio as any).option('#ffffff', 'White');
@@ -105,16 +148,17 @@ const Squiggle = (p: p5) => {
     ballColorRadio = p.createRadio();
     (ballColorRadio as any).option('#000000', 'Black');
     (ballColorRadio as any).option('#ffffff', 'White');
-    (ballColorRadio as any).option('#ff0000', 'Red');
-    (ballColorRadio as any).option('#00ff00', 'Green');
-    (ballColorRadio as any).option('#0000ff', 'Blue');
-    (ballColorRadio as any).option('#ffff00', 'Yellow');
-    (ballColorRadio as any).option('#00ffff', 'Cyan');
-    (ballColorRadio as any).option('#ff00ff', 'Magenta');
+    // (ballColorRadio as any).option('#ff0000', 'Red');
+    // (ballColorRadio as any).option('#00ff00', 'Green');
+    // (ballColorRadio as any).option('#0000ff', 'Blue');
+    // (ballColorRadio as any).option('#ffff00', 'Yellow');
+    // (ballColorRadio as any).option('#00ffff', 'Cyan');
+    // (ballColorRadio as any).option('#ff00ff', 'Magenta');
     (ballColorRadio as any).option('rainbow', 'Rainbow');
     (ballColorRadio as any).option('rainbowAlt', 'Rainbow Alt');
     (ballColorRadio as any).option('grayscale', 'Grayscale');
     (ballColorRadio as any).option('grayscaleAlt', 'Grayscale Alt');
+    (ballColorRadio as any).option('noFill', 'No Fill');
     (ballColorRadio as any).selected('#000000', 'Black');
     strokeColorRadio = p.createRadio();
     (strokeColorRadio as any).option('#000000', 'Black');
@@ -129,7 +173,9 @@ const Squiggle = (p: p5) => {
     (strokeColorRadio as any).option('rainbowAlt', 'Rainbow Alt');
     (strokeColorRadio as any).option('grayscale', 'Grayscale');
     (strokeColorRadio as any).option('grayscaleAlt', 'Grayscale Alt');
+    (strokeColorRadio as any).option('noStroke', 'No Stroke');
     (strokeColorRadio as any).selected('#ffffff', 'White');
+
     for (let i = 0; i < totalWaves; i++) {
       waves.push(new Wave(p.random(20, canvasWidth * 0.1), p.random(40, 800), p.random(p.PI * 2)));
     }
@@ -140,12 +186,14 @@ const Squiggle = (p: p5) => {
     translation = ballSize / 2;
     interval = Number(intervalSlider.value());
     strokeWeight = Number(strokeSlider.value());
+    shape = String(shapeRadio.value());
     bgColor = String(bgColorRadio.value());
     ballColor = String(ballColorRadio.value());
     strokeColor = String(strokeColorRadio.value());
 
     p.colorMode(p.HSB);
     p.background(bgColor);
+    p.strokeWeight(strokeWeight);
 
     let instances = canvasWidth - translation * 2 - ballSize;
 
@@ -179,6 +227,8 @@ const Squiggle = (p: p5) => {
         p.fill(0, 0, grayscale);
       } else if (ballColor.valueOf() === 'grayscaleAlt') {
         p.fill(0, 0, (100 - grayscale));
+      } else if (ballColor.valueOf() === 'noFill') {
+        p.noFill();
       } else {
         p.fill(ballColor);
       };
@@ -191,12 +241,25 @@ const Squiggle = (p: p5) => {
         p.stroke(0, 0, grayscale);
       } else if (strokeColor.valueOf() === 'grayscaleAlt') {
         p.stroke(0, 0, (100 - grayscale));
+      } else if (strokeColor.valueOf() === 'noStroke') {
+        p.noStroke();
       } else {
         p.stroke(strokeColor);
       };
 
-      p.strokeWeight(strokeWeight);
-      p.ellipse(x + translation + ballSize / 2, y + p.height / 2, ballSize, ballSize);
+      if (shape.valueOf() === 'circle') {
+        p.ellipse(x + translation + ballSize / 2, y + p.height / 2, ballSize, ballSize);
+      } else if (shape.valueOf() === 'square') {
+        p.rect(x + translation, y + p.height / 2 - ballSize / 2, ballSize, ballSize);
+      } else if (shape.valueOf() === 'ribbon') {
+        p.line(x + translation, y + p.height / 2, x + translation + ballSize, y + p.height / 2);
+      } else {
+        p.ellipse(x + translation + ballSize / 2, y + p.height / 2, ballSize, ballSize);
+      };
+
+      // p.triangle(x + translation, y + p.height / 2 + (Math.sin(Math.PI / 3) * ballSize) / 2, x + translation + ballSize / 2, y + p.height / 2 - (Math.sin(Math.PI / 3) * ballSize) / 2, x + translation + ballSize, y + p.height / 2 + (Math.sin(Math.PI / 3) * ballSize) / 2);
+      // p.quad(x + translation - strokeWeight, y + p.height / 2 + ballSize / 2, x + translation + ballSize - strokeWeight, y + p.height / 2 - ballSize / 2, x + translation + ballSize + strokeWeight, y + p.height / 2 - ballSize / 2, x + translation + strokeWeight, y + p.height / 2 + ballSize / 2);
+
     }
 
     for (let wave of waves) {

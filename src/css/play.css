@@ -1,0 +1,49 @@
+.playMain {
+  padding: 25px;
+}
+
+.p5Sketch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p5Canvas {
+  margin-bottom: 25px;
+}
+
+.btnCont,
+.sliderCont,
+.sliderCont div {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.sliderCont h3 {
+  margin-right: 10px;
+}
+
+.p5Sketch button {
+  padding: 5px 15px;
+}
+
+.p5Sketch h1 {
+  margin-bottom: 25px;
+}
+
+.p5Sketch input {
+  accent-color: #000000;
+}
+
+.p5Sketch label {
+  padding: 0px 10px;
+}
+
+.p5Sketch label input {
+  margin-right: 5px;
+}
+
+.react-p5-wrapper div {
+  padding: 10px 0px;
+}
