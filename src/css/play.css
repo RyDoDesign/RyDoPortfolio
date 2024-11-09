@@ -32,6 +32,8 @@
 }
 
 .p5Sketch button {
+  font-weight: 600;
+  font-size: 18px;
   padding: 5px 15px;
   margin: 10px 0px;
   color: #000000;
@@ -39,6 +41,10 @@
 
 .p5Sketch h1 {
   margin-bottom: 25px;
+}
+
+.p5Sketch h3 {
+  font-size: 18px;
 }
 
 .p5Sketch input {
