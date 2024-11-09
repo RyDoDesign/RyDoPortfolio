@@ -9,7 +9,7 @@
 }
 
 .p5Canvas {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .btnCont,
@@ -26,7 +26,7 @@
 
 .p5Sketch button {
   padding: 5px 15px;
-  margin: 10px 0px;
+  margin: 10px 0px 0px;
   color: #000000;
 }
 
