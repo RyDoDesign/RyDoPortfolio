@@ -29,3 +29,14 @@
 .activeLink {
   text-decoration: underline;
 }
+
+@media (orientation: portrait) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .navbar img {
+    height: 25px;
+    transition: all 200ms ease-in-out;
+  }
+}
