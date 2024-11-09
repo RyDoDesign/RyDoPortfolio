@@ -26,7 +26,7 @@ const Squiggle = (p: p5) => {
   let translation, interval, strokeWeight, shape, bgColor, ballColor, strokeColor;
   let btnCont, randomizeAllBtn, randomizeWaveBtn, randomizeColorsBtn, randomizeFormBtn;
   let sliderCont, sizeSlider: p5.Element, sizeSliderLabel, sizeSliderCont, intervalSlider: p5.Element, intervalSliderLabel, intervalSliderCont, strokeSlider: p5.Element, strokeSliderLabel, strokeSliderCont;
-  let shapeRadio: p5.Element, bgColorRadio: p5.Element, ballColorRadio: p5.Element, strokeColorRadio: p5.Element;
+  let shapeRadioCont, shapeRadioLabel, shapeRadio: p5.Element, bgColorRadioCont, bgColorRadioLabel, bgColorRadio: p5.Element, ballColorRadioCont, ballColorRadioLabel, ballColorRadio: p5.Element, strokeColorRadioCont, strokeColorRadioLabel, strokeColorRadio: p5.Element;
   let isPortrait = window.innerHeight >= window.innerWidth;
 
   if (isPortrait) {
@@ -129,22 +129,31 @@ const Squiggle = (p: p5) => {
     sliderCont.child(strokeSliderCont);
 
     // Radios
+    shapeRadioCont = p.createDiv();
+    shapeRadioCont.class('radioCont');
+    shapeRadioLabel = p.createElement('h3', 'Shape:');
     shapeRadio = p.createRadio();
     (shapeRadio as any).option('circle', 'Circle');
     (shapeRadio as any).option('square', 'Square');
     // (shapeRadio as any).option('triangle', 'Triangle');
     (shapeRadio as any).option('ribbon', 'Ribbon');
     (shapeRadio as any).selected('circle', 'Circle');
+    shapeRadioCont.child(shapeRadioLabel);
+    shapeRadioCont.child(shapeRadio);
+
+    bgColorRadioCont = p.createDiv();
+    bgColorRadioCont.class('radioCont');
+    bgColorRadioLabel = p.createElement('h3', 'BG Color:');
     bgColorRadio = p.createRadio();
     (bgColorRadio as any).option('#000000', 'Black');
     (bgColorRadio as any).option('#ffffff', 'White');
-    // (bgColorRadio as any).option('#ff0000', 'Red');
-    // (bgColorRadio as any).option('#00ff00', 'Green');
-    // (bgColorRadio as any).option('#0000ff', 'Blue');
-    // (bgColorRadio as any).option('#ffff00', 'Yellow');
-    // (bgColorRadio as any).option('#00ffff', 'Cyan');
-    // (bgColorRadio as any).option('#ff00ff', 'Magenta');
     (bgColorRadio as any).selected('#000000', 'Black');
+    bgColorRadioCont.child(bgColorRadioLabel);
+    bgColorRadioCont.child(bgColorRadio);
+
+    ballColorRadioCont = p.createDiv();
+    ballColorRadioCont.class('radioCont');
+    ballColorRadioLabel = p.createElement('h3', 'Ball Color:');
     ballColorRadio = p.createRadio();
     (ballColorRadio as any).option('#000000', 'Black');
     (ballColorRadio as any).option('#ffffff', 'White');
@@ -160,6 +169,12 @@ const Squiggle = (p: p5) => {
     (ballColorRadio as any).option('grayscaleAlt', 'Grayscale Alt');
     (ballColorRadio as any).option('noFill', 'No Fill');
     (ballColorRadio as any).selected('#000000', 'Black');
+    ballColorRadioCont.child(ballColorRadioLabel);
+    ballColorRadioCont.child(ballColorRadio);
+
+    strokeColorRadioCont = p.createDiv();
+    strokeColorRadioCont.class('radioCont');
+    strokeColorRadioLabel = p.createElement('h3', 'Stroke Color:');
     strokeColorRadio = p.createRadio();
     (strokeColorRadio as any).option('#000000', 'Black');
     (strokeColorRadio as any).option('#ffffff', 'White');
@@ -175,6 +190,8 @@ const Squiggle = (p: p5) => {
     (strokeColorRadio as any).option('grayscaleAlt', 'Grayscale Alt');
     (strokeColorRadio as any).option('noStroke', 'No Stroke');
     (strokeColorRadio as any).selected('#ffffff', 'White');
+    strokeColorRadioCont.child(strokeColorRadioLabel);
+    strokeColorRadioCont.child(strokeColorRadio);
 
     for (let i = 0; i < totalWaves; i++) {
       waves.push(new Wave(p.random(20, canvasWidth * 0.1), p.random(40, 800), p.random(p.PI * 2)));

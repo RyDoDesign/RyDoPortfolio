@@ -20,13 +20,20 @@
   flex-wrap: wrap;
 }
 
+.radioCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .sliderCont h3 {
   margin-right: 10px;
 }
 
 .p5Sketch button {
   padding: 5px 15px;
-  margin: 10px 0px 0px;
+  margin: 10px 0px;
   color: #000000;
 }
 
