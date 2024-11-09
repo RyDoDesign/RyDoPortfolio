@@ -24,7 +24,7 @@ const Squiggle = (p: p5) => {
   let totalWaves = 2;
   let ballSize = 75;
   let translation, interval, strokeWeight, shape, bgColor, ballColor, strokeColor;
-  let btnCont, randomizeAllBtn, randomizeWaveBtn, randomizeColorsBtn, randomizeFormBtn;
+  let btnCont, randomizeAllBtn, randomizeWaveBtn, randomizeColorsBtn, randomizeShapeBtn, randomizeSlidersBtn;
   let sliderCont, sizeSlider: p5.Element, sizeSliderLabel, sizeSliderCont, intervalSlider: p5.Element, intervalSliderLabel, intervalSliderCont, strokeSlider: p5.Element, strokeSliderLabel, strokeSliderCont;
   let shapeRadioCont, shapeRadioLabel, shapeRadio: p5.Element, bgColorRadioCont, bgColorRadioLabel, bgColorRadio: p5.Element, ballColorRadioCont, ballColorRadioLabel, ballColorRadio: p5.Element, strokeColorRadioCont, strokeColorRadioLabel, strokeColorRadio: p5.Element;
   let isPortrait = window.innerHeight >= window.innerWidth;
@@ -49,16 +49,19 @@ const Squiggle = (p: p5) => {
     setWaves(newWaves);
   }
 
-  function randomizeForm() {
+  function randomizeShape() {
+    const shapeRadioOptions = shapeRadio.elt.querySelectorAll('input');
+    const shapeRandomOption = shapeRadioOptions[Math.floor(Math.random() * shapeRadioOptions.length)];
+    (shapeRadio as any).selected(shapeRandomOption.value);
+  }
+
+  function randomizeSliders() {
     const randomSize = Math.floor(Math.random() * (sizeSliderMax - 1)) + 1;
     sizeSlider.value(randomSize);
     const randomInterval = Math.floor(Math.random() * 9) + 1;
     intervalSlider.value(randomInterval);
     const randomStrokeWeight = Math.floor(Math.random() * 5);
     strokeSlider.value(randomStrokeWeight);
-    const shapeRadioOptions = shapeRadio.elt.querySelectorAll('input');
-    const shapeRandomOption = shapeRadioOptions[Math.floor(Math.random() * shapeRadioOptions.length)];
-    (shapeRadio as any).selected(shapeRandomOption.value);
   }
 
   function randomizeColors() {
@@ -75,8 +78,9 @@ const Squiggle = (p: p5) => {
 
   function randomizeAll(setWaves: (waves: Wave[]) => void) {
     randomizeWave(setWaves);
-    randomizeForm();
+    randomizeSliders();
     randomizeColors();
+    randomizeShape();
   }
 
   p.setup = () => {
@@ -88,7 +92,8 @@ const Squiggle = (p: p5) => {
     randomizeAllBtn = p.createButton('Randomize All');
     randomizeWaveBtn = p.createButton('Randomize Wave');
     randomizeColorsBtn = p.createButton('Randomize Colors');
-    randomizeFormBtn = p.createButton('Randomize Form');
+    // randomizeShapeBtn = p.createButton('Randomize Shape');
+    randomizeSlidersBtn = p.createButton('Randomize Sliders');
     randomizeAllBtn.mousePressed(() => randomizeAll((newWaves) => {
       waves = newWaves;
     }));
@@ -96,11 +101,13 @@ const Squiggle = (p: p5) => {
       waves = newWaves;
     }));
     randomizeColorsBtn.mousePressed(() => randomizeColors());
-    randomizeFormBtn.mousePressed(() => randomizeForm());
+    // randomizeShapeBtn.mousePressed(() => randomizeShape());
+    randomizeSlidersBtn.mousePressed(() => randomizeSliders());
     btnCont.child(randomizeAllBtn);
     btnCont.child(randomizeWaveBtn);
     btnCont.child(randomizeColorsBtn);
-    btnCont.child(randomizeFormBtn);
+    // btnCont.child(randomizeShapeBtn);
+    btnCont.child(randomizeSlidersBtn);
 
     // Sliders
     sliderCont = p.createDiv();
