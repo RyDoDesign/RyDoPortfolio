@@ -292,4 +292,12 @@ const Squiggle = (p: p5) => {
   };
 };
 
+// reflection / double helix?
+// size modulation about x-axis?
+// randomize form?
+// additional forms?
+// invisible ouputs?
+// color dropdowns?
+// save output?
+
 export default Squiggle;
