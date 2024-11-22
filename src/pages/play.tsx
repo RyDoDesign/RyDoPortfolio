@@ -12,10 +12,10 @@ export function Play() {
         <h1>Squiggle</h1>
         <ReactP5Wrapper sketch={Squiggle} />
       </section>
-      <section className="p5Sketch">
+      {/* <section className="p5Sketch">
         <h1>Tripple Pendy</h1>
         <ReactP5Wrapper sketch={Pendy} />
-      </section>
+      </section> */}
     </main>
   )
 }

@@ -68,7 +68,7 @@ export function Work() {
               </div>
             </div>
           </Link>
-          <Link to="/misc">
+          {/* <Link to="/misc">
             <div className="titleCard">
               <img src={miscTC} alt="Miscellaneous title card" />
               <div className="projectInfo">
@@ -76,7 +76,7 @@ export function Work() {
                 <h3>2019 - Present</h3>
               </div>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </main>
     </>

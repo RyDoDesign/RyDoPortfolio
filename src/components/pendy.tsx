@@ -8,6 +8,8 @@ const Pendy = (p: p5) => {
   let px2 = -1, py2 = -1, px3 = -1, py3 = -1;
   let cx: number, cy: number;
   let trail1: { x: number, y: number }[] = [], trail2: { x: number, y: number }[] = [], trail3: { x: number, y: number }[] = [];
+  let velocities: number[] = [];
+  let velocitySum: number;
   let maxAlpha = 100;
   let pendulumSize = 25;
   let trailLength = 100;
@@ -109,9 +111,9 @@ const Pendy = (p: p5) => {
     let midLines = [1, 0.5, 0.25];
     let thickLines = [2, 1, 0.5];
 
-    drawTrail(trail1, midLines[0], 'white');
-    drawTrail(trail2, midLines[1], 'white');
-    drawTrail(trail3, midLines[2], 'rainbow');
+    drawTrail(trail1, thickLines[0], 'white');
+    drawTrail(trail2, thickLines[1], 'white');
+    drawTrail(trail3, thickLines[2], 'rainbow');
 
     // Initial values for previous position
     if (px2 == -1 && py2 == -1) {
@@ -133,6 +135,15 @@ const Pendy = (p: p5) => {
       a1_v = a1_v;
       a2_v = a2_v;
       a3_v = a3_v;
+    }
+    velocities.push(totalV);
+    if (velocities.length > 50) velocities.splice(0, 1);
+    velocitySum = velocities.reduce((acc, currentVal) => acc + currentVal, 0);
+    if (velocitySum <= 0.00001 && velocitySum >= -0.00001) {
+      a1_v = p.random(v1, v2);
+      a2_v = p.random(-v2, -v1);
+      a3_v = p.random(v1, v2);
+      console.log(velocitySum, "restarted")
     }
     a1 += a1_v;
     a2 += a2_v;
